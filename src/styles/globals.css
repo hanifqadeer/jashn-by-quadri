@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;500;600;700&display=swap');
-@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ──────────────────────────────────────────────
    JASHN by Quadri — Design System
    Color Palette: Deep Black + Champagne Gold
    ────────────────────────────────────────────── */
 :root {
-  --background: #0a0a0a;
-  --foreground: #f5f0e8;
-
   /* Gold spectrum */
   --gold-100: #fdf6e3;
   --gold-200: #f5e6b8;
@@ -18,7 +18,7 @@
   --gold-600: #a07820;
   --gold-700: #7a5a16;
 
-  /* Charcoal */
+  /* Charcoal / Deep Black */
   --charcoal-900: #0a0a0a;
   --charcoal-800: #111111;
   --charcoal-700: #1a1a1a;
@@ -37,14 +37,7 @@
   /* Accents */
   --rose-gold: #b76e79;
   --champagne: #f7e7ce;
-}
-
-@theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Cormorant Garamond', serif;
-  --font-cinzel: 'Cinzel', serif;
+  --ivory: #fffff0;
 }
 
 /* ── Base Reset ── */
@@ -90,6 +83,13 @@ h1, h2, h3, h4, h5 {
   color: var(--gold-300);
 }
 
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-200) 0%, var(--gold-400) 50%, var(--gold-200) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ── Gold Shimmer Animation ── */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .glass-dark {
-  background: rgba(10, 10, 10, 0.85);
+  background: rgba(10, 10, 10, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(212, 168, 67, 0.1);
@@ -152,7 +152,6 @@ h1, h2, h3, h4, h5 {
   position: relative;
   overflow: hidden;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: none;
 }
 
 .btn-gold::before {
@@ -195,7 +194,6 @@ h1, h2, h3, h4, h5 {
   border: 1px solid rgba(212, 168, 67, 0.4);
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: none;
 }
 
 .btn-ghost:hover {
@@ -251,6 +249,21 @@ h1, h2, h3, h4, h5 {
 :focus-visible {
   outline: 2px solid var(--gold-400);
   outline-offset: 3px;
+}
+
+/* ── Grain Texture Overlay ── */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
 }
 
 /* ── Animations ── */
