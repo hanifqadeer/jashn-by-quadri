@@ -46,12 +46,12 @@ const services = [
 ];
 
 const galleryImages = [
-  '/decor1.jpeg',
-  '/decor2.jpeg',
+  '/decor1.JPEG',
+  '/decor2.JPEG',
   'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop',
-  '/decor3.jpeg',
-  '/decor4.jpeg',
+  '/decor3.JPEG',
+  '/decor4.JPEG',
 ];
 
 export default function HomePage() {

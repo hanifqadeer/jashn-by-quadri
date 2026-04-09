@@ -50,7 +50,7 @@ export default function Navbar() {
               className="flex flex-col items-center group"
             >
               <img 
-                src="/logo.jpeg" 
+                src="/logo.JPEG" 
                 alt="JASHN Logo" 
                 className={`object-contain transition-all duration-500 origin-left ${scrolled ? 'h-8' : 'h-10'}`} 
               />

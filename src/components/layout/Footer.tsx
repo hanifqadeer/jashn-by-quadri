@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="flex flex-col items-center mb-12">
           <Link href="/" className="mb-8">
             <img 
-              src="/logo.jpeg" 
+              src="/logo.JPEG" 
               alt="JASHN Logo" 
               className="h-32 object-contain hover:scale-97 transition-transform duration-500" 
             />
