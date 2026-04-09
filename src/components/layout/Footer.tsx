@@ -1,17 +1,14 @@
 import Link from 'next/link';
 
-const footerLinks = {
-  'Explore': [
-    { label: 'Home',                  href: '/'                        },
-    { label: 'About Us',              href: '/about'                   },
-    { label: 'Our Services',          href: '/services'                },
-    { label: 'Commercial Photobooths',href: '/commercial-photobooths'  },
-  ],
-  'Connect': [
-    { label: 'Book Your Event',       href: '/book'                    },
-    { label: 'Contact Us',            href: '/book#contact'            },
-  ],
-};
+// Flattened links for a cleaner, centered layout
+const footerLinks = [
+  { label: 'Home',                   href: '/' },
+  { label: 'About Us',               href: '/about' },
+  { label: 'Our Services',           href: '/services' },
+  { label: 'Commercial Photobooths', href: '/commercial-photobooths' },
+  { label: 'Book Your Event',        href: '/book' },
+  { label: 'Contact Us',             href: '/book#contact' },
+];
 
 const socials = [
   {
@@ -38,67 +35,67 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#080808] border-t border-[rgba(212,168,67,0.1)]">
-      {/* Top gold line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#d4a843] to-transparent" />
+    <footer className="relative bg-[#080808] border-t border-white/5 flex flex-col items-center text-center overflow-hidden">
+      
+      {/* Top Subtle Gold Line */}
+      <div className="absolute top-0 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-[#d4a843]/50 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <div className="mb-5">
-              <span className="font-cinzel text-2xl tracking-[0.35em] text-[#e8c96a] uppercase block">JASHN</span>
-              <span className="font-display italic text-sm tracking-[0.2em] text-[#555]">by Quadri</span>
-            </div>
-            <p className="text-[#555] text-sm font-light leading-relaxed max-w-xs">
-              Crafting extraordinary moments that transcend the ordinary. Every celebration is a masterpiece waiting to be unveiled.
-            </p>
-            {/* Socials */}
-            <div className="flex items-center gap-3 mt-6">
-              {socials.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  id={`footer-social-${social.label.toLowerCase()}`}
-                  aria-label={social.label}
-                  className="w-9 h-9 flex items-center justify-center border border-[rgba(212,168,67,0.2)] text-[#666] hover:text-[#e8c96a] hover:border-[rgba(212,168,67,0.5)] transition-all duration-300"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+      <div className="w-full max-w-5xl px-6 py-24 flex flex-col items-center">
+        
+        {/* ── Logo & Brand Description ── */}
+        <div className="flex flex-col items-center mb-12">
+          <Link href="/" className="mb-8">
+            <img 
+              src="/logo.jpeg" 
+              alt="JASHN Logo" 
+              className="h-32 object-contain hover:scale-97 transition-transform duration-500" 
+            />
+          </Link>
+          <p className="text-[#666] text-sm font-light leading-relaxed max-w-md">
+            Crafting extraordinary moments that transcend the ordinary. Every celebration is a masterpiece waiting to be unveiled.
+          </p>
+        </div>
 
-          {/* Links */}
-          {Object.entries(footerLinks).map(([section, links]) => (
-            <div key={section}>
-              <h4 className="font-cinzel text-[0.65rem] tracking-[0.3em] uppercase text-[#d4a843] mb-5">{section}</h4>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      id={`footer-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="text-[#555] hover:text-[#e8c96a] text-sm font-light transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* ── Center Navigation Links ── */}
+        <ul className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 mb-12 max-w-2xl">
+          {footerLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                id={`footer-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                className="font-cinzel text-[0.65rem] tracking-[0.2em] uppercase text-[#bbb] hover:text-[#e8c96a] transition-colors duration-300"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* ── Social Icons ── */}
+        <div className="flex items-center gap-4 mb-16">
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              id={`footer-social-${social.label.toLowerCase()}`}
+              aria-label={social.label}
+              className="w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-[#666] hover:text-[#111] hover:bg-[#d4a843] hover:border-[#d4a843] transition-all duration-300"
+            >
+              {social.icon}
+            </a>
           ))}
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-[rgba(255,255,255,0.05)] flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#333] text-xs font-light tracking-wider">
+        {/* ── Bottom Copyright ── */}
+        <div className="w-full max-w-3xl border-t border-white/5 pt-8 flex flex-col items-center gap-3">
+          <p className="font-cinzel text-[#444] text-[0.55rem] tracking-[0.3em] uppercase">
             © {year} JASHN by Quadri. All rights reserved.
           </p>
-          <p className="text-[#222] text-xs font-light tracking-wider">
+          <p className="font-display italic text-[#333] text-xs tracking-widest">
             Crafted with passion in Pakistan
           </p>
         </div>
+
       </div>
     </footer>
   );

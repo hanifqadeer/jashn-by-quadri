@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GoldDivider from '@/components/ui/GoldDivider';
 import ServiceCard from '@/components/ui/ServiceCard';
@@ -7,268 +8,221 @@ import Button from '@/components/ui/Button';
 
 export const metadata: Metadata = {
   title: 'JASHN by Quadri — Luxury Celebration Experiences',
-  description:
-    'JASHN by Quadri creates extraordinary celebration experiences — luxury weddings, galas, corporate events, and premium photobooths in Pakistan.',
+  description: 'JASHN by Quadri creates extraordinary celebration experiences — luxury weddings, galas, and premium photobooths.',
 };
 
 const services = [
   {
-    icon: '🌹',
+    icon: '',
     title: 'Luxury Weddings',
-    description: 'From intimate nikkah ceremonies to grand receptions, we orchestrate unforgettable weddings infused with beauty and grace.',
+    description: 'From intimate nikkah ceremonies to grand receptions, we orchestrate unforgettable weddings.',
     href: '/services',
     tag: 'Signature',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
   },
   {
-    icon: '✨',
+    icon: '',
     title: 'Gala Nights',
-    description: 'Award ceremonies, corporate galas, and charity dinners — curated with exquisite detail and a touch of glamour.',
+    description: 'Award ceremonies and corporate galas curated with exquisite detail and a touch of glamour.',
     href: '/services',
     tag: 'Corporate',
+    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop',
   },
   {
-    icon: '📸',
+    icon: '',
     title: 'Commercial Photobooths',
-    description: 'Premium AI-powered and branded photobooths for hotels, brands, and events. A stunning guest experience every time.',
+    description: 'Premium AI-powered installations for brands and hotels. A stunning guest experience.',
     href: '/commercial-photobooths',
     tag: 'B2B',
+    image: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format&fit=crop',
   },
   {
-    icon: '🎊',
+    icon: '',
     title: 'Brand Activations',
-    description: 'Immersive, on-brand experiences that create lasting impressions. We make your brand the centre of every celebration.',
+    description: 'Immersive, on-brand experiences that create lasting impressions for global brands.',
     href: '/services',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop',
   },
+];
+
+const galleryImages = [
+  '/decor1.jpeg',
+  '/decor2.jpeg',
+  'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop',
+  '/decor3.jpeg',
+  '/decor4.jpeg',
 ];
 
 export default function HomePage() {
   return (
-    <>
-      {/* ── Hero ── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#080808]">
-        {/* Background gradient orbs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-gradient-to-br from-[#d4a843]/8 via-transparent to-transparent blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#b76e79]/5 blur-3xl" />
-          <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-[#d4a843]/5 blur-3xl" />
+    <div className="bg-[#080808] text-[#f5f0e8] selection:bg-[#d4a843]/30 w-full overflow-hidden">
+
+      {/* ── Hero (Using your Vimeo Link) ── */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          {/* Vimeo Background Wrapper */}
+          <iframe
+            src="https://player.vimeo.com/video/1181443196?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1"
+            className="absolute top-1/2 left-1/2 w-[115vw] h-[115vh] -translate-x-1/2 -translate-y-1/2 object-cover"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            title="Hero Background"
+          />
         </div>
 
-        {/* Decorative grid lines */}
-        <div className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(212,168,67,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.8) 1px, transparent 1px)`,
-            backgroundSize: '80px 80px',
-          }}
-        />
-
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          {/* Pre-heading */}
+        <div className="relative z-20 max-w-5xl flex flex-col items-center">
           <AnimatedSection delay={0}>
-            <p className="font-cinzel text-[0.65rem] tracking-[0.5em] uppercase text-[#d4a843] mb-6">
-              ✦ &nbsp; Luxury Celebration Experiences &nbsp; ✦
+            <p className="font-cinzel text-[0.65rem] tracking-[0.6em] uppercase text-[#d4a843] mb-8 mt-12">
+              Luxury Celebration Experiences
             </p>
           </AnimatedSection>
 
-          {/* Main heading */}
           <AnimatedSection delay={0.15}>
-            <h1 className="font-display text-7xl md:text-8xl lg:text-9xl leading-[0.9] mb-6">
-              <span className="block text-[#f5f0e8]">Every</span>
-              <span className="block gold-shimmer">Moment</span>
-              <span className="block text-[#f5f0e8]">Deserves</span>
-              <span className="block italic text-[#e8c96a]">Magic</span>
+            <h1 className="font-display text-6xl md:text-8xl lg:text-9xl leading-[0.85] mb-8">
+              <span className="block text-white opacity-90">Every</span>
+              <span className="block gold-shimmer py-2">Moment</span>
+              <span className="block italic text-[#e8c96a] font-serif">Deserves Magic.</span>
             </h1>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.3}>
-            <GoldDivider className="my-8 max-w-xs mx-auto" />
-          </AnimatedSection>
-
-          {/* Sub-copy */}
           <AnimatedSection delay={0.4}>
-            <p className="text-[#888] font-light text-lg md:text-xl leading-relaxed max-w-xl mx-auto mb-10">
-              We architect celebrations that live beyond the evening — weddings, galas, photobooths, and brand experiences crafted with obsessive detail.
+            <p className="text-white/60 font-light text-lg md:text-xl leading-relaxed max-w-2xl text-center mb-12">
+              Architecting luxury weddings, gala nights, and immersive brand experiences with obsessive attention to detail.
             </p>
           </AnimatedSection>
 
-          {/* CTAs */}
           <AnimatedSection delay={0.5}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button href="/book" size="lg" id="hero-cta-book">
-                Begin Your Journey
-              </Button>
-              <Button href="/services" variant="ghost" size="lg" id="hero-cta-services">
-                Explore Services
-              </Button>
-            </div>
-          </AnimatedSection>
-
-          {/* Scroll hint */}
-          <AnimatedSection delay={0.7}>
-            <div className="mt-16 flex flex-col items-center gap-2 text-[#333]">
-              <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#d4a843]" />
-              <span className="font-cinzel text-[0.55rem] tracking-[0.3em] uppercase">Scroll</span>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ── Brand Statement ── */}
-      <section className="section-padding bg-[#080808] text-center">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection>
-            <GoldDivider className="mb-12" />
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[#d4a843] mb-6">
-              Our Philosophy
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <h2 className="font-display text-5xl md:text-6xl text-[#f5f0e8] leading-tight mb-6">
-              We Don&apos;t Plan Events.
-              <br />
-              <em className="text-[#e8c96a]">We Compose Memories.</em>
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.3}>
-            <p className="text-[#666] font-light text-lg leading-relaxed max-w-2xl mx-auto">
-              At JASHN by Quadri, each celebration is a bespoke creation. We blend artisanal craftsmanship with flawless execution, ensuring every detail radiates luxury and intention.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.4}>
-            <GoldDivider className="mt-12" />
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ── Services Grid ── */}
-      <section className="section-padding bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection className="text-center mb-16">
-            <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[#d4a843] mb-4">
-              What We Do
-            </p>
-            <h2 className="font-display text-5xl md:text-6xl text-[#f5f0e8]">
-              Our Services
-            </h2>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {services.map((service, i) => (
-              <ServiceCard key={service.title} {...service} delay={i * 0.1} />
-            ))}
-          </div>
-
-          <AnimatedSection delay={0.5} className="text-center mt-12">
-            <Button href="/services" variant="ghost" id="home-view-all-services">
-              View All Services
+            <Button href="/book" size="lg" className="px-12 py-6 bg-[#d4a843] text-black hover:bg-white transition-all">
+              Begin Your Journey
             </Button>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ── Stats ── */}
-      <section className="section-padding bg-[#080808]">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: '200+', label: 'Events Curated' },
-              { value: '98%', label: 'Client Satisfaction' },
-              { value: '50+', label: 'Brand Partners' },
-              { value: '6+', label: 'Years of Excellence' },
-            ].map((stat, i) => (
-              <AnimatedSection key={stat.label} delay={i * 0.1} className="flex flex-col items-center">
-                <span className="font-display text-5xl md:text-6xl gold-shimmer">{stat.value}</span>
-                <GoldDivider className="my-3 w-full max-w-[80px]" animated={false} ornament={false} />
-                <span className="font-cinzel text-[0.6rem] tracking-[0.25em] uppercase text-[#555]">{stat.label}</span>
+      {/* ── Philosophy ── */}
+      <section className="py-32 px-6 bg-[#0a0a0a] flex flex-col items-center text-center border-y border-white/5">
+        <div className="max-w-4xl">
+          <AnimatedSection>
+            <h2 className="font-display text-5xl md:text-6xl mb-8 leading-tight">
+              We Don&apos;t Plan Events.
+              <br />
+              <em className="text-[#e8c96a] not-italic font-serif">We Compose Memories.</em>
+            </h2>
+            <div className="flex justify-center mb-10">
+              <GoldDivider className="w-32" />
+            </div>
+            <p className="text-[#888] font-light text-xl leading-relaxed mx-auto max-w-2xl">
+              Based in Pakistan, serving the world. At JASHN by Quadri, we blend artisanal craftsmanship with flawless execution to ensure every detail radiates luxury.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── Highlight Reel (Using Vimeo) ── */}
+      <section className="relative w-full h-[80vh] md:h-[90vh] flex flex-col items-center justify-center text-center overflow-hidden border-y border-white/5">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-black/60 z-10" />
+          <iframe
+            src="https://player.vimeo.com/video/1181448377?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1"
+            className="absolute top-1/2 left-1/2 w-[115vw] h-[115vh] -translate-x-1/2 -translate-y-1/2 object-cover"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            title="Highlight Reel"
+          />
+        </div>
+
+        <div className="relative z-20 flex flex-col items-center justify-center h-full w-full px-6">
+          <AnimatedSection>
+            <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[#d4a843] mb-4 drop-shadow-md">
+              The Experience
+            </p>
+            <h2 className="font-display text-5xl md:text-7xl text-white drop-shadow-lg mb-6">
+              A Glimpse of Magic
+            </h2>
+            <p className="text-white/80 font-light text-lg md:text-xl max-w-2xl mx-auto drop-shadow-md hidden md:block">
+              Immerse yourself in a world where every detail is curated to perfection.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── Services Grid ── */}
+      <section className="py-32 px-6 bg-[#0a0a0a] flex flex-col items-center text-center">
+        <div className="max-w-7xl w-full">
+          <AnimatedSection className="mb-16">
+            <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[#d4a843] mb-4">Our Expertise</p>
+            <h2 className="font-display text-5xl md:text-6xl mb-8">Bespoke Services</h2>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, i) => (
+              <AnimatedSection key={service.title} delay={i * 0.1} className="group flex flex-col items-center text-center">
+                <div className="relative w-full aspect-[4/5] overflow-hidden mb-8 rounded-sm border border-white/10">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 w-full flex flex-col items-center px-4">
+                    <span className="text-3xl mb-3 block">{service.icon}</span>
+                    <h3 className="font-display text-2xl text-white">{service.title}</h3>
+                  </div>
+                </div>
+                <p className="text-[#888] text-sm font-light leading-relaxed px-4 max-w-sm">
+                  {service.description}
+                </p>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Photobooth Teaser ── */}
-      <section className="section-padding bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative overflow-hidden glass border border-[rgba(212,168,67,0.12)] p-12 lg:p-20">
-            {/* Glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#d4a843]/5 rounded-full blur-3xl pointer-events-none" />
+      {/* ── Curated Photo Gallery ── */}
+      <section className="py-32 px-6 flex flex-col items-center text-center">
+        <div className="max-w-7xl w-full">
+          <AnimatedSection className="mb-16">
+            <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[#d4a843] mb-4">Portfolio</p>
+            <h2 className="font-display text-5xl md:text-6xl mb-6">Curated Moments</h2>
+          </AnimatedSection>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <AnimatedSection direction="left">
-                <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[#d4a843] mb-4">
-                  B2B Partnership
-                </p>
-                <h2 className="font-display text-4xl md:text-5xl text-[#f5f0e8] mb-5 leading-tight">
-                  Commercial
-                  <br />
-                  <em className="text-[#e8c96a]">Photobooths</em>
-                </h2>
-                <GoldDivider className="my-6 max-w-xs" />
-                <p className="text-[#666] font-light leading-relaxed mb-8">
-                  Elevate your venue, brand event, or hotel experience with our premium photobooth installations. AI-powered, branded, instant-print — your guests will love it.
-                </p>
-                <Button href="/commercial-photobooths" id="home-photobooth-cta">
-                  Explore Partnerships
-                </Button>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 auto-rows-[250px] md:auto-rows-[350px]">
+            {galleryImages.map((src, i) => (
+              <AnimatedSection
+                key={i}
+                delay={i * 0.1}
+                className={`relative w-full h-full overflow-hidden border border-white/5 group ${i === 0 || i === 3 ? 'md:col-span-2' : ''}`}
+              >
+                <Image
+                  src={src}
+                  alt="Gallery Image"
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                />
               </AnimatedSection>
-
-              <AnimatedSection direction="right" delay={0.2}>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { icon: '🤖', title: 'AI-Powered', desc: 'Smart filters and digital overlays' },
-                    { icon: '🖨️', title: 'Instant Print', desc: 'Premium photo prints on-site' },
-                    { icon: '✏️', title: 'Custom Branded', desc: 'Logo frames and brand overlays' },
-                    { icon: '📊', title: 'Analytics', desc: 'Event data and engagement reports' },
-                  ].map((feature) => (
-                    <div key={feature.title} className="glass p-5 border border-[rgba(212,168,67,0.08)]">
-                      <div className="text-2xl mb-2">{feature.icon}</div>
-                      <h4 className="font-cinzel text-[0.65rem] tracking-[0.2em] uppercase text-[#d4a843] mb-1">{feature.title}</h4>
-                      <p className="text-[#555] text-xs font-light">{feature.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </AnimatedSection>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
-      <section className="relative section-padding bg-[#080808] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#d4a843]/5 via-transparent to-[#b76e79]/5 pointer-events-none" />
-        <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <AnimatedSection>
-            <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[#d4a843] mb-6">
-              ✦ &nbsp; Ready? &nbsp; ✦
-            </p>
-            <h2 className="font-display text-5xl md:text-7xl text-[#f5f0e8] mb-6">
-              Let&apos;s Create
-              <br />
-              <em className="text-[#e8c96a]">Something Extraordinary</em>
-            </h2>
-            <p className="text-[#666] font-light text-lg mb-10">
-              Your vision. Our expertise. An experience beyond imagination.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button href="/book" size="lg" id="bottom-cta-book">
-                Start Planning
-              </Button>
-              <Link
-                href="/about"
-                id="bottom-cta-about"
-                className="font-cinzel text-xs tracking-[0.2em] uppercase text-[#666] hover:text-[#d4a843] transition-colors"
-              >
-                Learn About Us →
-              </Link>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-    </>
+      {/* ── Footer / CTA ── */}
+      {/* <footer className="py-32 bg-black flex flex-col items-center text-center px-6 border-t border-white/5">
+        <AnimatedSection className="flex flex-col items-center w-full max-w-4xl">
+          <h2 className="font-display text-5xl md:text-7xl mb-12">
+            Ready to Create Something <br className="hidden md:block" />
+            <span className="italic text-[#e8c96a] font-serif">Extraordinary?</span>
+          </h2>
+          <Button href="/book" size="lg" className="bg-[#d4a843] text-black hover:scale-105 transition-transform">
+            Start Planning
+          </Button>
+          <div className="mt-24 pt-8 w-full border-t border-white/5 text-[#444] font-cinzel text-[0.55rem] tracking-[0.4em] uppercase">
+            © {new Date().getFullYear()} JASHN by Quadri. All Rights Reserved.
+          </div>
+        </AnimatedSection>
+      </footer> */}
+    </div>
   );
 }
